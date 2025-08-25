@@ -1,0 +1,190 @@
+/* App.css */
+
+/* General body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+}
+
+/* App container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Form */
+.url-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.url-input {
+  flex: 1 1 300px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+
+.submit-btn {
+  padding: 12px 25px;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  filter: brightness(1.1);
+}
+
+.submit-btn:active {
+  transform: scale(0.95);
+}
+
+/* Short URL card */
+.short-url-card {
+  position: relative;
+  background-color: #fff;
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 90%;
+  transition: opacity 0.8s, transform 0.5s;
+}
+
+.short-url-card a {
+  word-break: break-all;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.copy-btn {
+  padding: 8px 15px;
+  background-color: #7ed6df;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.copy-btn:hover {
+  filter: brightness(1.1);
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  top: -30px;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* Admin panel toggle */
+.admin-toggle {
+  margin-top: 30px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #f1c40f;
+  font-weight: bold;
+  color: #333;
+  transition: 0.2s;
+}
+
+.admin-toggle:hover {
+  filter: brightness(1.1);
+}
+
+.admin-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Admin panel table */
+.admin-panel {
+  margin-top: 20px;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 95%;
+  overflow-x: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.admin-panel h2 {
+  margin-bottom: 15px;
+}
+
+.admin-panel table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-panel th,
+.admin-panel td {
+  padding: 8px;
+  text-align: left;
+}
+
+.admin-panel tr {
+  border-bottom: 1px solid #eee;
+  transition: 0.2s;
+}
+
+.admin-panel tr:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+@media (max-width: 600px) {
+  .url-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .url-input {
+    flex: 1 1 100%;
+  }
+
+  .short-url-card {
+    flex-direction: column;
+  }
+}

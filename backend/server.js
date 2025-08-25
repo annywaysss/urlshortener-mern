@@ -3,11 +3,23 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import urlRoutes from "./routes/urlRoutes.js";
+import path from "path";
+
+
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+app.use(express.static(path.join(process.cwd(), "frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "frontend/build", "index.html"));
+});
+app.use(cors({
+  origin: "*"  // for testing; later you can set your frontend URL
+}));
+
 app.use(express.json()); // parse JSON body
 
 mongoose.connect(process.env.MONGO_URI)
