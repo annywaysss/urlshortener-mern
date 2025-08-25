@@ -1,0 +1,12 @@
+
+
+# Frontend
+node_modules/
+build/
+.env
+
+# OS/IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
