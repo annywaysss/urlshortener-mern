@@ -1,34 +1,38 @@
+// server.js
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import urlRoutes from "./routes/urlRoutes.js";
 import path from "path";
-
-
+import urlRoutes from "./routes/urlRoutes.js";
 
 dotenv.config();
 
 const app = express();
 
-app.use(express.static(path.join(process.cwd(), "frontend/build")));
+// Middleware
+app.use(cors({ origin: "*" }));          // allow all origins for testing
+app.use(express.json());                  // parse JSON request body
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "frontend/build", "index.html"));
-});
-app.use(cors({
-  origin: "*"  // for testing; later you can set your frontend URL
-}));
-
-app.use(express.json()); // parse JSON body
-
+// MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.error("❌ DB connection error:", err));
 
-app.use(urlRoutes);
+// Routes
+app.use(urlRoutes);  // urlRoutes.js should have /api/shorten etc
 
-app.get("/", (req, res) => res.send("Hello MERN!"));
+// Optional: serve frontend (if you have React build folder)
+app.use(express.static(path.join(process.cwd(), "frontend/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "frontend/build", "index.html"));
+});
 
+// Test route to confirm server is running
+app.get("/", (req, res) => {
+  res.send("Hello MERN! Backend is running.");
+});
+
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
