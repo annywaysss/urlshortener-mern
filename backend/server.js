@@ -22,11 +22,7 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 app.use(urlRoutes);  // urlRoutes.js should have /api/shorten etc
 
-// Optional: serve frontend (if you have React build folder)
-app.use(express.static(path.join(process.cwd(), "frontend/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "frontend/build", "index.html"));
-});
+
 
 // Test route to confirm server is running
 app.get("/", (req, res) => {
